@@ -1,11 +1,14 @@
 {
-	"name": "rjmetrics-test",
-	"version":"0.0.1",
-	"description": "trying out rjmetrics wrapper",
-	"main": "service.js",
-	"scripts" : {
-		"run": "service.js"
-	},
-	"rjmetrics": "0.1.1"
-
+  "name": "rjmetrics-test",
+  "version": "0.0.1",
+  "description": "trying out rjmetrics wrapper",
+  "main": "service.js",
+  "scripts": {
+    "run": "service.js"
+  },
+  "rjmetrics": "0.1.1",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "rjmetrics": "^0.1.1"
+  }
 }

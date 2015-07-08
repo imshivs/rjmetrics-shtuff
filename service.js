@@ -1,8 +1,12 @@
+#!/usr/bin/env node
+
+require('dotenv').load();
+
 var rjmetrics = require("rjmetrics");
-var client = new rjmetrics.Client(0, "0607f685013a4015c3997fb294a2a5e9");
+var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
 var http = require('http');
 var request = require('request');
-
+var url = require('url');
 
 // function getTestPersonaLoginCredentials(callback) {
 
@@ -29,7 +33,7 @@ var request = require('request');
 
 //  function getData() {
 //   return client.makeApiCall({
-//     "1489424", "data", "https://api.rjmetrics.com/0.1/client/12/table" 
+//     "1489424", "data", "https://api.rjmetrics.com/0.1/client/12/table"
 //   })
 // }
 // //   return client.pushData(
@@ -65,20 +69,20 @@ var request = require('request');
 //   return deferred.promise;
 // }
 
-
 var username = "shivani@npmjs.com",
     password = "AgeQuodAgis@5",
-    url = "http://api.rjmetrics.com/0.1/export/72722",
-    auth = "0607f685013a4015c3997fb294a2a5e9";
+    exportApi = 'https://api.rjmetrics.com/0.1',
+    auth = process.env.RJ_METRICS_EXPORT_KEY;
 
 request(
     {
-        url : url,
+        url : exportApi + '/export',
         headers : {
             "X-RJM-API-Key" : auth
         }
     },
     function (error, response, body) {
-       console.log(body);
+      console.log(response.statusCode);
+      console.log(body);
     }
 );
