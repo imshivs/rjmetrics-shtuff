@@ -9,6 +9,7 @@
   "rjmetrics": "0.1.1",
   "dependencies": {
     "dotenv": "^1.2.0",
-    "rjmetrics": "^0.1.1"
+    "rjmetrics": "^0.1.1",
+    "request": "*"
   }
 }
