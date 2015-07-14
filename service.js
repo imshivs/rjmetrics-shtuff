@@ -8,6 +8,7 @@ var http = require('http');
 var request = require('request');
 var url = require('url');
 
+console.log(process.env.RJ_METRICS_IMPORT_KEY);
 // function getTestPersonaLoginCredentials(callback) {
 
 //     return http.get({
