@@ -51,12 +51,12 @@ uri ="http://api.hubapi.com/email/public/v1/subscriptions/jerry@example.org?hapi
 
 var username = "shivani@npmjs.com",
     password = "AgeQuodAgis@5",
-    email = 'http://api.hubapi.com/email/public/v1/subscriptions/timeline?hapikey=',
+    email = 'http://api.hubapi.com/email/public/v1/campaigns/by-id?hapikey=',
     auth = process.env.HUBSPOT_API_KEY;
 console.log(auth);
 request(
     {
-        url : email + auth,
+        url : email + auth + "&limit=5",
         headers : {
             "X-RJM-API-Key" : auth
         }
