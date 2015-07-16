@@ -66,21 +66,21 @@ var data = [{
   "created_at": "2012-08-05 04:51:02"
 }]
 
-
+var buf = new Buffer(data);
 var username = "shivani@npmjs.com",
     password = "AgeQuodAgis@5",
-    exportApi = 'https://connect.rjmetrics.com/v2/client/:cid/table/:table/data?apikey=:apikey',
-    auth = process.env.RJ_METRICS_EXPORT_KEY;
+    importApi = 'https://connect.rjmetrics.com/v2/client/3986/table/test/data?apikey=',
+    auth = process.env.RJ_METRICS_IMPORT_KEY
 
-request(
+request.post(
     {
-        url : exportApi + '/export',
+        url : importApi + auth,
         headers : {
-            "X-RJM-API-Key" : auth
+            "X-RJM-API-Key" : auth,
+            "content-type" : "application/json"
         }
     },
     function (error, response, body) {
-      console.log(response.statusCode);
       console.log(body);
     }
 );

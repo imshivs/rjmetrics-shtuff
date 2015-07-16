@@ -43,20 +43,40 @@ var request = require('request');
 // });
 
 
-uri ="http://api.hubapi.com/email/public/v1/subscriptions/jerry@example.org?hapikey=demo"
+// uri ="http://api.hubapi.com/email/public/v1/subscriptions/jerry@example.org?hapikey=demo"
 
 
+//SUBSCRIPTIONS TIMELINE
 
 
+// var username = "shivani@npmjs.com",
+//     password = "AgeQuodAgis@5",
+//     email = 'http://api.hubapi.com/email/public/v1/campaigns/by-id?hapikey=',
+//     auth = process.env.HUBSPOT_API_KEY;
+// console.log(auth);
+// request(
+//     {
+//         url : email + auth + "&limit=30",
+//         headers : {
+//             "X-RJM-API-Key" : auth
+//         }
+//     },
+//     function (error, response, body) {
+//       console.log(response.statusCode);
+//       console.log(body);
+//     }
+// );
+
+//CONTACT LISTS--npm E basic signup
 
 var username = "shivani@npmjs.com",
     password = "AgeQuodAgis@5",
-    email = 'http://api.hubapi.com/email/public/v1/campaigns/by-id?hapikey=',
+    email = 'https://api.hubapi.com/contacts/v1/lists/30?portalId=419727&hapikey=',
     auth = process.env.HUBSPOT_API_KEY;
 console.log(auth);
 request(
     {
-        url : email + auth + "&limit=5",
+        url : email + auth,
         headers : {
             "X-RJM-API-Key" : auth
         }
@@ -66,3 +86,45 @@ request(
       console.log(body);
     }
 );
+
+//CONTACT LISTS--npm E Agreed ULA
+
+var username = "shivani@npmjs.com",
+    password = "AgeQuodAgis@5",
+    email = 'https://api.hubapi.com/contacts/v1/lists/32?portalId=419727&hapikey=',
+    auth = process.env.HUBSPOT_API_KEY;
+console.log(auth);
+request(
+    {
+        url : email + auth,
+        headers : {
+            "X-RJM-API-Key" : auth
+        }
+    },
+    function (error, response, body) {
+      console.log(response.statusCode);
+      console.log(body);
+    }
+);
+
+
+
+//CAMPAIGN IDS
+
+// var username = "shivani@npmjs.com",
+//     password = "AgeQuodAgis@5",
+//     email = 'http://api.hubapi.com/email/public/v1/subscriptions/timeline?hapikey=',
+//     auth = process.env.HUBSPOT_API_KEY;
+// console.log(auth);
+// request(
+//     {
+//         url : email + auth,
+//         headers : {
+//             "X-RJM-API-Key" : auth
+//         }
+//     },
+//     function (error, response, body) {
+//       console.log(response.statusCode);
+//       console.log(body);
+//     }
+// );
