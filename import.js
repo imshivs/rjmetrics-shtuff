@@ -1,7 +1,5 @@
-
-require('dotenv').load();
+var _ = require('lodash')
 var rjmetrics = require("rjmetrics");
-var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
 
 // function syncUser(client, user) {
 //   return client.pushData(
@@ -95,23 +93,6 @@ var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
 //   "created_at": "2012-08-01 14:22:32"
 // }
 
-client.authenticate().then(function(data) {
-  console.log("here");
-  client.pushData(
-    "test_table",
-     { "keys": ["id"],
-      "id": 1,
-      "email": "joe@schmo.com",
-      "status": "pending",
-      "created_at": "2012-08-01 14:22:32"
-     })
-  }).then(function (data) {
-    console.log("saved:", data);
-  }).fail(function(err) {
-    console.log("Error", err, "saving.");
-  })
-
-
 // function syncUser(client, user) {
 //   return client.pushData(
 //     // table named "users"
@@ -183,3 +164,26 @@ client.authenticate().then(function(data) {
 // }).fail(function(err) {
 //   console.error("Failed to authenticate!");
 // });
+
+module.exports = function (opts) {
+  require('dotenv').load(_.pick(opts, ['path']));
+  console.log(process.env)
+/*
+  var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
+
+  client.authenticate().then(function(data) {
+    console.log("here");
+    client.pushData(
+      "test_table",
+       { "keys": ["id"],
+        "id": 1,
+        "email": "joe@schmo.com",
+        "status": "pending",
+        "created_at": "2012-08-01 14:22:32"
+       })
+    }).then(function (data) {
+      console.log("saved:", data);
+    }).fail(function(err) {
+      console.log("Error", err, "saving.");
+    })*/
+}
