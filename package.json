@@ -9,7 +9,8 @@
   "rjmetrics": "0.1.1",
   "dependencies": {
     "dotenv": "^1.2.0",
-    "rjmetrics": "^0.1.1",
-    "request": "*"
+    "googleapis": "^2.1.1",
+    "request": "*",
+    "rjmetrics": "^0.1.1"
   }
 }
