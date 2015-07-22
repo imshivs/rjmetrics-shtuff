@@ -6,11 +6,15 @@
   "scripts": {
     "run": "service.js"
   },
-  "rjmetrics": "0.1.1",
+  "bin": {
+    "rjmetrics-shtuff": "./bin/rjmetrics-shtuff.js"
+  },
   "dependencies": {
     "dotenv": "^1.2.0",
     "googleapis": "^2.1.1",
+    "lodash": "^3.10.0",
     "request": "*",
-    "rjmetrics": "^0.1.1"
+    "rjmetrics": "^0.1.1",
+    "yargs": "^3.15.0"
   }
 }
