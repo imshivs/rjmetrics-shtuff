@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 require('dotenv').load();
-
+console.log(process.env.RJ_METRICS_IMPORT_KEY);
 var rjmetrics = require("rjmetrics");
-var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
+var client = new rjmetrics.Client(3986, ""+process.env.RJ_METRICS_IMPORT_KEY);
 var http = require('http');
 var request = require('request');
 var url = require('url');

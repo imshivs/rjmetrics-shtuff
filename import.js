@@ -1,4 +1,5 @@
 
+
 // require('dotenv').load();
 // var rjmetrics = require("rjmetrics");
 // var client = new rjmetrics.Client(0, process.env.RJ_METRICS_IMPORT_KEY);
@@ -187,7 +188,8 @@
 
 
 var rjmetrics = require("rjmetrics");
-var client = new rjmetrics.Client(3986, process.env.RJ_METRICS_IMPORT_KEY);
+console.log(process.env.RJ_METRICS_IMPORT_KEY)
+var client = new rjmetrics.Client(3986, ""+ process.env.RJ_METRICS_IMPORT_KEY);
 
 function syncUser(client, user) {
   return client.pushData(
