@@ -82,6 +82,7 @@ var async = require('async')
     target = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all',
     auth = process.env.HUBSPOT_API_KEY,
     metrics = [];
+    dateCount = [];
 
 var q = async.queue(function (work, done) {
 
@@ -94,7 +95,6 @@ var q = async.queue(function (work, done) {
     }
 
     if (work.offset) obj.vidOffset = work.offset
-    var dateCount = [];
     request(
         {
             url : target,
@@ -124,19 +124,21 @@ var q = async.queue(function (work, done) {
                             });    
                             console.log(".")
 
-                            // console.log(metrics);
+                            // console.logg(metrics);
                             // console.log("\n\n\n")
                         }
                     })
                 
             })
-// console.log(dateCount.sort());
-dateCount.sort(function(a,b){
-    return a[0].getTime() - b[0].getTime();
-
-});
 
 console.log(dateCount);
+// console.log(dateCount.sort());
+// dateCount.sort(function(a,b){
+//     return a[0].getTime() - b[0].getTime();
+
+// });
+
+// console.log(dateCount);
 // console.log(dateCount);
 
             // console.log(body['vid-offset']);
@@ -153,8 +155,10 @@ console.log(dateCount);
 
 q.push({})
 
-q.drain = function () {
+q.drain = function(){
     // here's where we do something with the data.
     // output the values of metrics object, do some math on it ...
     console.log('we finished walking over all of the contacts in hubspot!')
+    console.log(dateCount);
+    return dateCount;
 }
