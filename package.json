@@ -10,9 +10,11 @@
     "rjmetrics-shtuff": "./bin/rjmetrics-shtuff.js"
   },
   "dependencies": {
+    "async": "^1.4.0",
     "dotenv": "^1.2.0",
     "googleapis": "^2.1.1",
-    "lodash": "^3.10.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "request": "*",
     "rjmetrics": "^0.1.1",
     "yargs": "^3.15.0"
