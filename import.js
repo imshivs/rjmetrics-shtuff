@@ -1,19 +1,29 @@
 
 require('dotenv').load();
+var async = require('async')
 var rjmetrics = require("rjmetrics");
 var client = new rjmetrics.Client(3986, process.env.RJ_METRICS_IMPORT_KEY);
 var hubspot = require("./hubspot.js");
 
 hubspot(function (to_push) {
   client.authenticate().then(function(data) {
-    console.log("here");
-      console.log(to_push);
-      client.pushData(to_push);
-    }).then(function (data) {
-      console.log("saved:", data);
-    }).fail(function(err) {
-      console.log("Error", err, "saving.");
-    })
+
+    async.eachLimit(to_push, 1, function (item, done) {
+      console.log('pushing', item)
+      client.pushData('signups_by_date', {
+        keys: ['id'],
+        id: item.date,
+        signups: item.count
+      }).then(function (out) {
+        console.log(out)
+        return done()
+      })
+    }, function (err) {
+      if (err) console.log(err.message);
+      else console.log('done!')
+    });
+
+  });
 })
 
 
