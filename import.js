@@ -10,9 +10,9 @@ hubspot(function (to_push) {
 
     async.eachLimit(to_push, 1, function (item, done) {
       console.log('pushing', item)
-      client.pushData('signups_by_date', {
+      client.pushData('signups_by_correct_date', {
         keys: ['id'],
-        id: item.date,
+        id: Date(item.date),
         signups: item.count
       }).then(function (out) {
         console.log(out)
