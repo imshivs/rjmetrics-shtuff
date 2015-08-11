@@ -4,6 +4,7 @@ var async = require('async')
 var rjmetrics = require("rjmetrics");
 var client = new rjmetrics.Client(3986, process.env.RJ_METRICS_IMPORT_KEY);
 var hubspot = require("./hubspot.js");
+var moment = require("moment");
 
 hubspot(function (to_push) {
   client.authenticate().then(function(data) {
@@ -12,7 +13,7 @@ hubspot(function (to_push) {
       console.log('pushing', item)
       client.pushData('signups_by_correct_date', {
         keys: ['id'],
-        id: Date(item.date),
+        id: new Date(item.date).toISOString(),
         signups: item.count
       }).then(function (out) {
         console.log(out)

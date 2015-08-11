@@ -9,7 +9,7 @@ var _ = require('lodash'),
     target = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all',
     auth = process.env.HUBSPOT_API_KEY,
     // metrics = [],
-    dateCount = {},
+    dateCount = [],
     ProgressBar = require('progress'),
     counter = 0,
     bar = new ProgressBar('downloading [:bar] :current', {total: 1253} );
@@ -46,14 +46,13 @@ module.exports = function (cb) {
                                 var name = contact.properties.firstname.value + ' ' + contact.properties.lastname.value;
                                 var list_id = list["static-list-id"];
                                 var timestamp = list.timestamp;
-                                var date = moment.unix(timestamp).format("MM/DD");
+                                var date = moment(new Date(timestamp)).format("MM-DD-YYYY");
                                 
                                 // peeps[name] = peeps[name] ? peeps[name] + 1 : 1
                                 // metrics.push({"name": name, "data" : {"id": id, "timestamp": timestamp}});
                                 // metrics.push({"date": date, human: {"name": name, "list_id": list_id}});
                                 
                                 dateCount[date] = (dateCount[date] || 0) + 1;
-
                                 // counter = counter +1;
                                 // console.log(".");
                                 bar.tick(1);                                
@@ -69,7 +68,9 @@ module.exports = function (cb) {
     //     return a[0].getTime() - b[0].getTime();
 
     // });
-
+    //     dateCount.forEach(function(obj){
+    //         console.log(obj.date);
+    //     });
     // console.log(dateCount);
     // console.log(dateCount);
 
